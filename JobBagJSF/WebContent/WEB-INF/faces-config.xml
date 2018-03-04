@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+        http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd" version="2.2">  
+   
+    <lifecycle>
+        <phase-listener>
+            beans.ciclovida.DepuracionListener
+        </phase-listener>
+    </lifecycle>
+    <application>
+        <locale-config>
+            <default-locale>es</default-locale>
+        </locale-config>
+        <!--etiquetas del formulario-->
+        <resource-bundle>
+            <!--No se necesita agregar la extension del archivo-->
+            <base-name>mensajes</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+        <!--cambio de textos de validadores-->
+        <message-bundle>jsf</message-bundle>
+    </application>
+</faces-config>
