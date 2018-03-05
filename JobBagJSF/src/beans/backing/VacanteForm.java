@@ -7,11 +7,13 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.component.UIInput;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import beans.helper.FacesContextHelper;
 import beans.model.Candidato;
 
 @RequestScoped
@@ -24,6 +26,8 @@ public class VacanteForm {
     //@Inject
     @ManagedProperty(value = "#{candidato}")
     private Candidato candidato;
+    
+    private boolean comentarioEnviado = false;
 
     public VacanteForm() {
         log.info("Creando objeto VacanteForm");
@@ -76,6 +80,20 @@ public class VacanteForm {
 
             facesContext.renderResponse();
         }
+    }
+    public void ocultarComentario(ActionEvent actionEvent) {
+        this.comentarioEnviado = !this.comentarioEnviado;
+        log.info("Mostrando/ocultando el comentario");
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        FacesContextHelper.limpiarImmediateFacesMessages(facesContext);
+    }
+
+    public boolean isComentarioEnviado() {
+        return comentarioEnviado;
+    }
+
+    public void setComentarioEnviado(boolean comentarioEnviado) {
+        this.comentarioEnviado = comentarioEnviado;
     }
 
 }
