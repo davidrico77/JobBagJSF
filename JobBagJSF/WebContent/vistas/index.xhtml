@@ -41,6 +41,26 @@
                         </h:inputText></td>
                     <td><h:message for="fechaNacimiento" /></td>
                 </tr>
+                 <tr>
+                    <td><h:outputLabel for="codigoPostal" value="#{msgs['vacanteForm.codigoPostal']}" /></td>
+                    <td><h:inputText id="codigoPostal" immediate="true"
+                                     onchange="this.form.submit()" required="true"
+                                     value="#{candidato.codigoPostal}"
+                                     valueChangeListener="#{vacanteForm.codigoPostalListener}" /></td>
+                    <td><h:message for="codigoPostal" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="colonia" value="#{msgs['vacanteForm.colonia']}" /></td>
+                    <td><h:inputText id="colonia" required="true"
+                                     value="#{candidato.colonia}" /></td>
+                    <td><h:message for="colonia" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="ciudad" value="#{msgs['vacanteForm.ciudad']}" /></td>
+                    <td><h:inputText id="ciudad" required="true"
+                                     value="#{candidato.ciudad}" /></td>
+                    <td><h:message for="ciudad" /></td>
+                </tr>
 
             </table>
 
