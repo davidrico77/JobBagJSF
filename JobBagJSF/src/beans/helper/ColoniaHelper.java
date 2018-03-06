@@ -6,9 +6,13 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.model.SelectItem;
-import javax.inject.Named;
+import javax.inject.Inject;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import beans.domain.Colonia;
+import beans.service.ColoniaService;
 
 
 @RequestScoped
@@ -16,15 +20,15 @@ import beans.domain.Colonia;
 //@Named
 public class ColoniaHelper {
 
+	@Inject
+	//@ManagedProperty(value = "#{coloniaService}")
+	ColoniaService coloniaService;
+	
+	Logger log = LogManager.getRootLogger();
+	
 	public List<Colonia> getColonias() {
-        List<Colonia> colonias = new ArrayList<>();
-        long coloniaId = 1;
-        Colonia colonia = new Colonia(coloniaId++, "Napoles", 3810);//no anteponer el cero, sino es un valor octal
-        colonias.add(colonia);
-        colonia = new Colonia(coloniaId++, "Polanco", 11530);
-        colonias.add(colonia);
-        colonia = new Colonia(coloniaId++, "Del Valle Centro", 3100);
-        colonias.add(colonia);
+        List<Colonia> colonias = coloniaService.findAll();
+        log.info("Recuperamos el listado de personas del EJB");
         return colonias;
     }
 
@@ -63,4 +67,5 @@ public class ColoniaHelper {
         }
         return selectItems;
     }
+	
 }
