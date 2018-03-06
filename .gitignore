@@ -29,3 +29,6 @@ dependency-reduced-pom.xml
 *.ipr
 *.iws
 *.idea
+/.metadata/
+
+.recommenders/
